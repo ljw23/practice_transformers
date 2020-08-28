@@ -1,0 +1,28 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: 当前文件",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "--model_name_or_path","bert-base-uncased",
+                "--task_name", "SST-2",
+                "--do_train",
+                "--do_eval",
+                "--data_dir", "/home/liujunwen/git_resources/practice_transformers/glue_data/SST-2",
+                "--max_seq_length", "128",
+                "--per_gpu_eval_batch_size", "=8",
+                "--per_gpu_train_batch_size", "=8",
+                "--learning_rate", "0.00002",
+                "--num_train_epochs","3.0",
+                "--output_dir", "./tmp/SST-2/"
+            ]
+        }
+    ]
+}
