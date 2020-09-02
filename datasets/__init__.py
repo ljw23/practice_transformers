@@ -1,8 +1,9 @@
 # flake8: noqa
 # There's no way to ignore "F401 '...' imported but unused" warnings in this
 # module, but to preserve other warnings. So, don't check this module at all.
+import sys
+sys.path.append('/home/liujunwen/vscodeworkspace/practice_transformers')
 
-from .metrics import is_sklearn_available
 from .processors import (
     DataProcessor,
     InputExample,
@@ -14,6 +15,4 @@ from .processors import (
     glue_tasks_num_labels,
 )
 
-
-if is_sklearn_available():
-    from .metrics import glue_compute_metrics
+from .metrics import glue_compute_metrics

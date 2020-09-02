@@ -20,8 +20,8 @@ import os
 from enum import Enum
 from typing import List, Optional, Union
 
-from ...file_utils import is_tf_available
-from ...tokenization_utils import PreTrainedTokenizer
+from utils.file_utils import is_tf_available
+from ..tokenization_utils import PreTrainedTokenizer
 from .utils import DataProcessor, InputExample, InputFeatures
 
 

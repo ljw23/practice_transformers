@@ -7,10 +7,9 @@
 @Contact :   ljw23@mail.ustc.edu.cn
 @Desc    :   Finetuning the library models for sequence classification on GLUE (Bert, XLM, XLNet, RoBERTa, Albert, XLM-RoBERTa).
 '''
-import sys
-sys.path.append('/home/liujunwen/git_resources/practice_transformers')
-print(sys.path)
 # here put the import lib
+import sys
+sys.path.append('/home/liujunwen/vscodeworkspace/practice_transformers')
 from utils.hf_argparser import HfArgumentParser
 from train.training_args import TrainingArguments, ModelArguments, set_seed
 from config.text_classification_config import GlueDataTrainingArguments as DataTrainingArguments
