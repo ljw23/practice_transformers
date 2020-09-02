@@ -1,20 +1,22 @@
-# coding=utf-8
-# Copyright 2018 The Google AI Language Team Authors and The HuggingFace Inc. team.
-# Copyright (c) 2018, NVIDIA CORPORATION.  All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-""" Finetuning the library models for sequence classification on GLUE (Bert, XLM, XLNet, RoBERTa, Albert, XLM-RoBERTa)."""
-
+# -*- encoding: utf-8 -*-
+'''
+@File    :   run_glue.py
+@Time    :   2020/08/28 16:58:36
+@Author  :   Liu Junwen 
+@Version :   1.0
+@Contact :   ljw23@mail.ustc.edu.cn
+@Desc    :   Finetuning the library models for sequence classification on GLUE (Bert, XLM, XLNet, RoBERTa, Albert, XLM-RoBERTa).
+'''
+import sys
+sys.path.append('/home/liujunwen/git_resources/practice_transformers')
+print(sys.path)
+# here put the import lib
+from utils.hf_argparser import HfArgumentParser
+from train.training_args import TrainingArguments, ModelArguments, set_seed
+from config.text_classification_config import GlueDataTrainingArguments as DataTrainingArguments
+from datasets.metrics import glue_compute_metrics
+from train import trainer
+'''
 
 import dataclasses
 import logging
@@ -36,29 +38,10 @@ from transformers import (
     glue_tasks_num_labels,
     set_seed,
 )
-
+'''
+ 
 
 logger = logging.getLogger(__name__)
-
-
-@dataclass
-class ModelArguments:
-    """
-    Arguments pertaining to which model/config/tokenizer we are going to fine-tune from.
-    """
-
-    model_name_or_path: str = field(
-        metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
-    )
-    config_name: Optional[str] = field(
-        default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
-    )
-    tokenizer_name: Optional[str] = field(
-        default=None, metadata={"help": "Pretrained tokenizer name or path if not the same as model_name"}
-    )
-    cache_dir: Optional[str] = field(
-        default=None, metadata={"help": "Where do you want to store the pretrained models downloaded from s3"}
-    )
 
 
 def main():
@@ -105,8 +88,10 @@ def main():
     set_seed(training_args.seed)
 
     try:
-        num_labels = glue_tasks_num_labels[data_args.task_name]
-        output_mode = glue_output_modes[data_args.task_name]
+        # num_labels = glue_tasks_num_labels[data_args.task_name]
+        num_labels = 2
+        # output_mode = glue_output_modes[data_args.task_name]
+        output_mode = 'classification'
     except KeyError:
         raise ValueError("Task not found: %s" % (data_args.task_name))
 

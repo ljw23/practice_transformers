@@ -3,8 +3,9 @@ import json
 import logging
 from dataclasses import dataclass, field
 from typing import Any, Dict, Optional, Tuple
-
-from .file_utils import cached_property, is_torch_available, torch_required
+import sys
+print(sys.path)
+from utils.file_utils import cached_property, is_torch_available, torch_required
 
 
 if is_torch_available():
@@ -169,3 +170,29 @@ class TrainingArguments:
         if is_torch_available():
             valid_types.append(torch.Tensor)
         return {k: v if type(v) in valid_types else str(v) for k, v in d.items()}
+
+
+@dataclass
+class ModelArguments:
+    """
+    Arguments pertaining to which model/config/tokenizer we are going to fine-tune from.
+    """
+
+    model_name_or_path: str = field(
+        metadata={"help": "Path to pretrained model or model identifier from huggingface.co/models"}
+    )
+    config_name: Optional[str] = field(
+        default=None, metadata={"help": "Pretrained config name or path if not the same as model_name"}
+    )
+    tokenizer_name: Optional[str] = field(
+        default=None, metadata={"help": "Pretrained tokenizer name or path if not the same as model_name"}
+    )
+    cache_dir: Optional[str] = field(
+        default=None, metadata={"help": "Where do you want to store the pretrained models downloaded from s3"}
+    )
+
+def set_seed(seed: int):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
