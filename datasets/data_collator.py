@@ -5,7 +5,7 @@ from typing import Any, Dict, List, NewType, Tuple
 import torch
 from torch.nn.utils.rnn import pad_sequence
 
-from ..tokenization_utils import PreTrainedTokenizer
+from .tokenization_utils import PreTrainedTokenizer
 
 
 class DataCollator(ABC):

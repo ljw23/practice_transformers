@@ -3,9 +3,9 @@ import json
 import logging
 from dataclasses import dataclass, field
 from typing import Any, Dict, Optional, Tuple
-import sys
-print(sys.path)
 from utils.file_utils import cached_property, is_torch_available, torch_required
+import random
+import numpy as np
 
 
 if is_torch_available():
