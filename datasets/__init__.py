@@ -15,4 +15,5 @@ from .processors import (
     glue_tasks_num_labels,
 )
 
-from .metrics import glue_compute_metrics
+from .metrics import glue_compute_metrics,xnli_compute_metrics
+from .tokenization_auto import AutoTokenizer

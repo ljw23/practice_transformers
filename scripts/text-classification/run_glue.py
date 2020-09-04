@@ -10,6 +10,7 @@
 # here put the import lib
 import sys
 sys.path.append('/home/liujunwen/vscodeworkspace/practice_transformers')
+sys.path.append('/home/liujunwen/git_resources/practice_transformers')
 from utils.hf_argparser import HfArgumentParser
 from train.training_args import TrainingArguments, ModelArguments, set_seed
 from config.text_classification_config import GlueDataTrainingArguments as DataTrainingArguments
@@ -20,6 +21,9 @@ import os
 import numpy as np
 from typing import Dict, Optional
 from config.configuration_auto import  AutoConfig
+from datasets import AutoTokenizer
+from modeling import AutoModelForSequenceClassification
+from datasets.datasets.glue import GlueDataset
 '''
 
 import dataclasses

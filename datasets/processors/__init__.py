@@ -3,6 +3,7 @@
 # module, but to preserve other warnings. So, don't check this module at all.
 import sys
 sys.path.append('/home/liujunwen/vscodeworkspace/practice_transformers')
+sys.path.append('/home/liujunwen/git_resources/practice_transformers')
 
 from .glue import glue_convert_examples_to_features, glue_output_modes, glue_processors, glue_tasks_num_labels
 from .utils import DataProcessor, InputExample, InputFeatures, SingleSentenceClassificationProcessor
