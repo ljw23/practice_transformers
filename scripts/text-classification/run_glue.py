@@ -15,7 +15,8 @@ from utils.hf_argparser import HfArgumentParser
 from train.training_args import TrainingArguments, ModelArguments, set_seed
 from config.text_classification_config import GlueDataTrainingArguments as DataTrainingArguments
 from datasets.metrics import glue_compute_metrics
-from train import trainer
+from train.trainer import Trainer
+from train.trainer_utils import EvalPrediction
 import logging
 import os
 import numpy as np
